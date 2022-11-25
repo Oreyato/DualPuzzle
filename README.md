@@ -4,25 +4,15 @@
 
 Engine provided by Gaetz: [git repository here](https://github.com/Gaetz/opengl-training)
 
-Created a little snake game using his engine.
+Created a puzzle game using his engine.
 
 ### Status 
 
-- [x] Snake
-	- [x] Can move (using WASD / arrows)
-	- [x] Can grow
-- [x] Apples
-	- [x] Can be eaten
-	- [x] Can spawn randomly
-- [ ] Collisions
-	- [x] Head against apples
-	- [ ] Head against body
-	- [ ] Head against screen bounds
-- [ ] Showing the score using cubes
+
 
 ### Install
 
-1.  clone this repository: [https://github.com/Oreyato/opengl-training](https://github.com/Oreyato/opengl-training "https://github.com/Oreyato/opengl-training")
+1.  clone this repository: [https://github.com/Oreyato/DualPuzzle](https://github.com/Oreyato/DualPuzzle "https://github.com/Oreyato/DualPuzzle")
 3.  install cmake: [https://cmake.org/download/](https://cmake.org/download/ "https://cmake.org/download/")
     ![Image](https://media.discordapp.net/attachments/1029294340700373053/1029294574864187392/unknown.png?width=400&height=27)    
     
