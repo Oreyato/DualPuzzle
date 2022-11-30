@@ -20,10 +20,10 @@
 #define SHADER_ID(s) STR(s)
 
 #define SCENE_NAME Scene_DualPuzzle
-#define SHADER_NAME IDENT(dualpuzzle)
+#define SHADER_NAME IDENT(DualPuzzle)
 
 /**
  * Scene_030_Test 030_Test
  * 
- * Scene_Snake snake
+ * Scene_DualPuzzle DualPuzzle
  *  * */

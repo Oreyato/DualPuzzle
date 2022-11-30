@@ -3,9 +3,8 @@
 #include "../engine/Game.h"
 #include "../engine/Assets.h"
 #include "../engine/Scene.h"
-// #include PATH(SCENE_NAME,EXT)
-//#include "Scene_005_Tessellation.h"
-#include "Scene_DualPuzzle.h"
+#include PATH(SCENE_NAME,EXT)
+// #include "Scene_DualPuzzle.h"
 
 Game::Game() : isRunning(false),
                windowWidth(0),
@@ -24,8 +23,8 @@ void Game::init(int screenWidth, int screenHeight) {
 
 void Game::load() {
     // Game state
-    changeState(std::make_unique<Scene_DualPuzzle>());
-    //changeState(std::make_unique<SCENE_NAME>());
+    // changeState(std::make_unique<Scene_DualPuzzle>());
+    changeState(std::make_unique<SCENE_NAME>());
 }
 
 void Game::handleInputs() {

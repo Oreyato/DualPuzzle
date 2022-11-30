@@ -18,7 +18,7 @@ extern "C" { int AmdPowerXpressRequestHighPerformance = 1; }
 
 int main(int argc, char *argv[])
 {
-	const std::string title = "OpenGL";
+	const std::string title = "DualPuzzle";
 	const int SCREEN_WIDTH = 1280;
 	const int SCREEN_HEIGHT = 720;
 
