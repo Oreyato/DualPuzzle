@@ -20,26 +20,27 @@ void Scene_DualPuzzle::setGame(Game *_game)
 	game = _game;
 }
 
-void Scene_DualPuzzle::load()
-{
-    std::srand((int) std::time(nullptr));
-
+void Scene_DualPuzzle::loadBackground(int width, int height) {
 	Assets::loadShader("assets/shaders/bgTile.vert", "assets/shaders/bgTile.frag", "", "", "", "bgTile");
-
 	shader = Assets::getShader("bgTile");
 
-    glCreateVertexArrays(1, &vao);
+	glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
+	const int translationSize = width*height;
+
 	// Prepare offsets
-	Vector2 translations[100];
+	Vector2 translations[1000];
+
 	int index = 0;
-	float offset = 0.1f;
-	for(int y = -10; y < 10; y += 2) {
-		for(int x = -10; x < 10; x += 2) {
+	float offset = 0.0f;
+	for(int y = -height; y < height; y += 2) {
+		for(int x = -width; x < width; x += 2) {
 			Vector2 translation;
+
 			translation.x = (float)x / 10.0f + offset;
 			translation.y = (float)y / 10.0f + offset;
+
 			translations[index++] = translation;
 		}
 	}  
@@ -56,12 +57,19 @@ void Scene_DualPuzzle::load()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);	
 	glVertexAttribDivisor(0, 1); // This function tells OpenGL when to update the 
 							 	 // content of a vertex attribute to the next element
+}
 
+void Scene_DualPuzzle::load()
+{
+    std::srand((int) std::time(nullptr));
+	
 	// Load all textures
 
 	// Load level from level index
 
-
+	levelWidth = 6;
+	levelHeight = 4;
+	loadBackground(levelWidth, levelHeight);
 }
 
 void Scene_DualPuzzle::loadLevel(int i) {
@@ -93,7 +101,7 @@ void Scene_DualPuzzle::update(float dt)
 void Scene_DualPuzzle::drawBackground() {
 	shader.use();
 	glBindVertexArray(vao);
-	glDrawArraysInstanced(GL_TRIANGLES, 0, 6, 100);
+	glDrawArraysInstanced(GL_TRIANGLES, 0, 6, levelWidth*levelHeight);
 	// glDrawArrays(GL_TRIANGLES, 0, 3);
 	glBindVertexArray(0);
 }

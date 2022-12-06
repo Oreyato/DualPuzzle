@@ -29,6 +29,7 @@ private:
 
 	int getRand(int a, int b);
 
+	void loadBackground(int width, int height);
 	void drawBackground();
 
 	//v Level init values ============================================
