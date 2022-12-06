@@ -23,8 +23,13 @@ public:
 
 private:
 	Game *game;
+	GLuint vao;
+    Shader shader;
+    float timeSinceStart;
 
 	int getRand(int a, int b);
+
+	void drawBackground();
 
 	//v Level init values ============================================
 	// Level

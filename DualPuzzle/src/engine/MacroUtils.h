@@ -19,8 +19,8 @@
 #define SHADER_COMP(s) PATH3(SHADER_PATH, s, EXT_COMP)
 #define SHADER_ID(s) STR(s)
 
-#define SCENE_NAME Scene_DualPuzzle
-#define SHADER_NAME IDENT(DualPuzzle)
+#define SCENE_NAME Scene_007_SpinningCube
+#define SHADER_NAME IDENT(007_SpinningCube)
 
 /**
  * Scene_030_Test 030_Test
