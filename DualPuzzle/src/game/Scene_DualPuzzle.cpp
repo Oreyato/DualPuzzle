@@ -23,23 +23,24 @@ void Scene_DualPuzzle::setGame(Game *_game)
 void Scene_DualPuzzle::loadBackground(int width, int height) {
 	Assets::loadShader("assets/shaders/bgTile.vert", "assets/shaders/bgTile.frag", "", "", "", "bgTile");
 	shader = Assets::getShader("bgTile");
-
 	glCreateVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
 	const int translationSize = width*height;
+	const float squareSize = 0.05f;
 
 	// Prepare offsets
 	Vector2 translations[1000];
 
-	int index = 0;
-	float offset = 0.0f;
+	int index = 0; 
+	const float divider = 1/squareSize;
+
 	for(int y = -height; y < height; y += 2) {
 		for(int x = -width; x < width; x += 2) {
 			Vector2 translation;
 
-			translation.x = (float)x / 10.0f + offset;
-			translation.y = (float)y / 10.0f + offset;
+			translation.x = (float)x / divider + squareSize;
+			translation.y = (float)y / divider + squareSize;
 
 			translations[index++] = translation;
 		}
@@ -48,15 +49,20 @@ void Scene_DualPuzzle::loadBackground(int width, int height) {
 	unsigned int instanceVBO;
 	glGenBuffers(1, &instanceVBO);
 	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2)*100, &translations[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vector2)*translationSize, &translations[0], GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
+	// Send translations vectors
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, instanceVBO);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);	
 	glVertexAttribDivisor(0, 1); // This function tells OpenGL when to update the 
 							 	 // content of a vertex attribute to the next element
+
+	shader.use();
+	// Send squares size
+	shader.setFloat("uniSize", squareSize);
 }
 
 void Scene_DualPuzzle::load()
@@ -67,8 +73,8 @@ void Scene_DualPuzzle::load()
 
 	// Load level from level index
 
-	levelWidth = 6;
-	levelHeight = 4;
+	levelWidth = 18;
+	levelHeight = 18;
 	loadBackground(levelWidth, levelHeight);
 }
 
@@ -100,6 +106,7 @@ void Scene_DualPuzzle::update(float dt)
 
 void Scene_DualPuzzle::drawBackground() {
 	shader.use();
+
 	glBindVertexArray(vao);
 	glDrawArraysInstanced(GL_TRIANGLES, 0, 6, levelWidth*levelHeight);
 	// glDrawArrays(GL_TRIANGLES, 0, 3);
