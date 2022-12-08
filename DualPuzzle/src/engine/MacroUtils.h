@@ -23,7 +23,6 @@
 #define SHADER_NAME IDENT(DualPuzzle)
 
 /**
- * Scene_007_SpinningCube 007_SpinningCube
  * Scene_DualPuzzle DualPuzzle
  *  
  **/

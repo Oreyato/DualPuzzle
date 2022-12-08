@@ -20,6 +20,15 @@ void Scene_DualPuzzle::setGame(Game *_game)
 	game = _game;
 }
 
+#pragma region Loads
+// v =============================================================╗
+// v Loads                                                        ║
+
+void Scene_DualPuzzle::loadLevel(int i) {
+	// Browse levels json file and get the right one
+
+}
+
 void Scene_DualPuzzle::loadBackground(int width, int height) {
 	Assets::loadShader("assets/shaders/bgTile.vert", "assets/shaders/bgTile.frag", "", "", "", "bgTile");
 	shader = Assets::getShader("bgTile");
@@ -65,24 +74,22 @@ void Scene_DualPuzzle::loadBackground(int width, int height) {
 	shader.setFloat("uniSize", squareSize);
 }
 
-void Scene_DualPuzzle::load()
-{
+void Scene_DualPuzzle::load() {
     std::srand((int) std::time(nullptr));
 	
 	// Load all textures
 
 	// Load level from level index
+	loadLevel(0);
 
-	levelWidth = 18;
-	levelHeight = 18;
+	levelWidth = 19;
+	levelHeight = 19;
 	loadBackground(levelWidth, levelHeight);
 }
 
-void Scene_DualPuzzle::loadLevel(int i) {
-	// Browse levels json file and get the right one
-
-
-}
+// v Loads                                                        ║
+// ^ =============================================================╝
+#pragma endregion
 
 void Scene_DualPuzzle::clean()
 {
@@ -100,9 +107,21 @@ void Scene_DualPuzzle::handleEvent(const InputState &inputState)
 {
 }
 
+#pragma region Updates
+// v =============================================================╗
+// v Updates                                                      ║
+
 void Scene_DualPuzzle::update(float dt)
 {
+
 }
+
+// v Updates                                                      ║
+// ^ =============================================================╝
+#pragma endregion
+#pragma region Draws
+// v =============================================================╗
+// v Draws                                                        ║
 
 void Scene_DualPuzzle::drawBackground() {
 	shader.use();
@@ -119,6 +138,10 @@ void Scene_DualPuzzle::draw() {
 
 	drawBackground();
 }
+
+// v Draws                                                        ║
+// ^ =============================================================╝
+#pragma endregion
 
 int Scene_DualPuzzle::getRand(int a, int b)
 {
