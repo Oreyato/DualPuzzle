@@ -42,6 +42,9 @@ void Actor::rotate(const Vector3& axis, float angle) {
 void Actor::actorInput(const struct InputState& inputState) {
 
 }
+void Actor::updateActor(float dt) {
+
+}
 
 void Actor::processInput(const struct InputState& inputState) {
     for (auto component : components)

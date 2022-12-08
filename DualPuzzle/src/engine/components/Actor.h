@@ -31,6 +31,7 @@ public:
     //v Game loop ====================================================
 protected:
     virtual void actorInput(const struct InputState& inputState);
+    virtual void updateActor(float dt);
 public:
     void processInput(const struct InputState& inputState);
     void update(float dt);
