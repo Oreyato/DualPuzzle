@@ -1,7 +1,7 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
-// #include "../input/InputState.h" 
+#include "../input/InputState.h" 
 
 class Actor;
 
@@ -16,7 +16,7 @@ public:
     class Actor& getOwner() { return owner; }
     int getUpdateOrder() const { return updateOrder; }
 
-    // virtual void processInput(const InputState &inputState);
+    virtual void processInput(const InputState &inputState);
     virtual void update(float dt);
 
 protected:
