@@ -33,7 +33,7 @@ if (NOT WIN32)
     string(STRIP ${SDL2_LIBRARIES} SDL2_LIBRARIES)
 endif (NOT WIN32)
 add_executable(DualPuzzle src/main.cpp)
-target_link_libraries(DualPuzzle game engine maths input ${GLEW_LIBRARIES} ${SDL2_LIBRARIES} OpenGL::GL OpenGL::GLU)
+target_link_libraries(DualPuzzle game engine maths input components collision ${GLEW_LIBRARIES} ${SDL2_LIBRARIES} OpenGL::GL OpenGL::GLU)
 
 
 if (WIN32)

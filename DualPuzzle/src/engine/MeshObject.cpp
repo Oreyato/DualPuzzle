@@ -153,7 +153,7 @@ void MeshObject::load(const char *filename) {
         subObject[0].first = 0;
         subObject[0].count = indexType != GL_NONE ? index_data_chunk->index_count : vertex_data_chunk->total_vertices;
         numSubObjects = 1;
-    }
+    } 
 
     delete[] data;
 
