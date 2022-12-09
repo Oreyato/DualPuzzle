@@ -2,6 +2,7 @@
 #define Scene_DualPuzzle_H
 
 #include "../engine/Scene.h"
+#include "../engine/components/Actor.h"
 
 // Main scene of the game, contains all the game's logic
 class Scene_DualPuzzle : public Scene
@@ -32,6 +33,12 @@ private:
 	void loadBackground(int width, int height);
 	void drawBackground();
 
+	//v Actors =======================================================
+	std::vector<Actor*> actors; 
+
+	void addActor(Actor* actorP);
+	void removeActor(Actor* actorP);
+	//^ Actors =======================================================
 	//v Level init values ============================================
 	// Level
 	int levelWidth;

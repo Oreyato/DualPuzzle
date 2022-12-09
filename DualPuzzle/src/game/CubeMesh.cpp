@@ -12,7 +12,7 @@ void CubeMesh::load() {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
-    static const GLfloat vertexPositions[] =
+    const GLfloat vertexPositions[] =
     {
         -0.25f, 0.25f, -0.25f,
         -0.25f, -0.25f, -0.25f,

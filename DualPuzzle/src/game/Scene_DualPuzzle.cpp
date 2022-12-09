@@ -5,6 +5,8 @@
 #include <cstdlib>
 #include <ctime>
 
+// Actors
+#include "actors/BoundaryCube.h"
 
 Scene_DualPuzzle::Scene_DualPuzzle()
 {
@@ -82,8 +84,8 @@ void Scene_DualPuzzle::load() {
 	// Load level from level index
 	loadLevel(0);
 
-	levelWidth = 19;
-	levelHeight = 19;
+	levelWidth = 12;
+	levelHeight = 7;
 	loadBackground(levelWidth, levelHeight);
 }
 
@@ -147,3 +149,22 @@ int Scene_DualPuzzle::getRand(int a, int b)
 {
 	return std::rand() % (b - a + 1) + a;
 }
+
+// v =============================================================╗
+// v Actors                                                       ║
+
+void Scene_DualPuzzle::addActor(Actor* actorP) {
+	actors.emplace_back(actorP);
+}
+void Scene_DualPuzzle::removeActor(Actor* actorP) {
+	auto iter = std::find(begin(actors), end(actors), actorP);
+	if (iter != end(actors))
+	{
+		std::iter_swap(iter, end(actors) - 1);
+		actors.pop_back();
+	}
+}
+
+// v Actors                                                       ║
+// ^ =============================================================╝
+
